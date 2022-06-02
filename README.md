@@ -11,6 +11,7 @@ Server setup:-
 Run the below commands in the root of the server project i.e inside the shopBridgeServer folder
 1) npm i
 2) change the .env files according to your config
+3) Mongodb is used as database
 
 Functionalities in Client:- 
 
