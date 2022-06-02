@@ -1,0 +1,32 @@
+<section>
+  <app-sidebar></app-sidebar>
+  <!-- //sidebar menu end -->
+  <!-- header-starts -->
+  <div class="header sticky-header">
+    <div class="menu-right">
+      <div class="navbar user-panel-top">
+        <div class="search-box">
+          <form >
+            <input
+              class="search-input"
+              placeholder="Search Here..."
+              type="search"
+              id="search"
+              (keyup)="updateSearchTerm($event.target)"
+            />
+            <button class="search-submit" value="">
+              <span class="fa fa-search"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //header-ends -->
+  <!-- main content start -->
+  <router-outlet></router-outlet>
+  <!-- main content end-->
+</section>
+<!--footer section start-->
+<app-footer></app-footer>
+<!--footer section end-->

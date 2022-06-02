@@ -1,0 +1,75 @@
+<div class="main-content">
+  <!-- content -->
+  <div class="container-fluid content-top-gap">
+    <h3>{{button_text}} Product</h3>
+    <div class="header-button">
+      <button class="btn btn-primary" [routerLink]="[ '/' ]">Home</button>
+    </div>
+    <!-- forms  -->
+    <div class="card card_border py-2 mb-4" *ngIf="isLoaded">
+      <div class="card-body">
+        <form [formGroup]="Form" class="user" (ngSubmit)="createProduct()">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4" class="input__label">Name</label>
+              <input
+                type="text"
+                class="form-control input-style"
+                id="inputEmail4"
+                placeholder="name"
+                formControlName="name"
+              />
+              <div *ngIf="isSubmitted && fvalues['name'].errors">
+                <span class="error-span" *ngIf="isSubmitted && fvalues['name'].errors['required']">Name is required</span>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4" class="input__label">Price</label>
+              <input
+                appNumberCheck
+                type="text"
+                class="form-control input-style"
+                id="inputPassword4"
+                placeholder="Price"
+                formControlName="price"
+              />
+              <div *ngIf="isSubmitted && fvalues['price'].errors">
+                <span class="error-span" *ngIf="isSubmitted && fvalues['price'].errors['required']">Price is required</span>
+                <span class="error-span" *ngIf="isSubmitted && fvalues['price'].errors['price_limit']">Price cannot be more than 10K</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress" class="input__label">Description</label>
+            <textarea
+              class="form-control input-style"
+              id="inputAddress"
+              placeholder="Description"
+              formControlName="description"
+            ></textarea>
+            <div *ngIf="isSubmitted && fvalues['description'].errors">
+              <span class="error-span" *ngIf="isSubmitted && fvalues['description'].errors['required']">Description is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputFile" class="input__label">Image</label>
+            <input
+              type="file"
+              class="form-control input-style"
+              id="inputFile"
+              placeholder="Add image"
+              (change)="onImgFileChange($event)"
+            />
+            <div *ngIf="isSubmitted && fvalues['image'].errors">
+              <span class="error-span" *ngIf="isSubmitted && fvalues['image'].errors['required']">Product Image is required</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-style mt-4">
+            {{ button_text }}
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- //forms  -->
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="main-content">
+  <!-- content -->
+  <div class="container-fluid content-top-gap">
+    <h3>Product Details</h3>
+    <div class="header-button">
+      <button class="btn btn-primary" [routerLink]="[ '/' ]">Home</button>
+    </div>
+    <div class="card card_border p-lg-5 p-3 mb-4" *ngIf="productDetails">
+      <div class="card-body py-3 p-0">
+        <div class="row">
+          <div class="col-lg-6 align-self pr-lg-4">
+            <h3 class="block__title mb-lg-4">{{ productDetails.name }}</h3>
+            <p class="mb-3">{{ productDetails.description }}</p>
+            <a class="btn btn-style btn-primary">{{ productDetails.price | currency | floatPrice }}</a>
+          </div>
+          <div class="col-lg-6 pl-lg-4 mt-lg-0 mt-4">
+            <img [src]="apiUrl+productDetails.image" alt="" class="img-fluid rounded" />
+          </div>
+        </div>
+        <div class="people-social mt-3">
+          <a [routerLink]="[ '/product/edit', productDetails._id ]" class="edit"
+            ><span class="fa fa-pencil"></span
+          ></a>
+          <a (click)="deleteProduct(productDetails._id)" class="delete"
+            ><span class="fa fa-trash"></span
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

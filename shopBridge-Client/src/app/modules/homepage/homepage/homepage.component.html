@@ -1,0 +1,58 @@
+<div class="main-content">
+  <!-- content -->
+  <div class="container-fluid content-top-gap">
+    <div class="card card_border mb-5">
+      <div class="cards__heading">
+        <h3>Products -<span> (SHOP BRIDGE)</span></h3>
+        <div class="header-button">
+          <button class="btn btn-primary" [routerLink]="[ '/product/add' ]">Add Product</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row px-2" *ngIf="products; else noProducts">
+          <div class="col-lg-3 col-md-6 mb-4 px-2" *ngFor="let product of products | filterBy: searchTerm">
+            <div class="card text-center card_border py-2">
+              <div class="card-body">
+                <div class="team-main-19">
+                  <a href="#url"
+                    ><img
+                      class="rounded-circle"
+                      [src]="apiUrl+product.image"
+                      alt=" "
+                      style="max-width: 150px;height:150px"
+                  /></a>
+                  <div class="right-team-9">
+                    <div>
+                      <h5>
+                        <a href="#url" class="card__title mb-2 mt-3"
+                          >{{ product.name }}</a
+                        >
+                      </h5>
+                      <p class="">{{ product.price | currency:'' | floatPrice}}</p>
+                    </div>
+                    <div class="people-social mt-3">
+                      <a [routerLink]="[ '/product/', product._id ]" class="view"
+                        ><span class="fa fa-eye"></span
+                      ></a>
+                      <a [routerLink]="[ '/product/edit', product._id ]" class="edit"
+                        ><span class="fa fa-pencil"></span
+                      ></a>
+                      <a (click)="deleteProduct(product._id)" class="delete"
+                        ><span class="fa fa-trash"></span
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- display if no products are available -->
+        <ng-template #noProducts>
+          <p>No product available.  <a class="no-product" [routerLink]="[ '/product/add' ]">Click here</a> to Add new product</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <!-- //content -->
+</div>
